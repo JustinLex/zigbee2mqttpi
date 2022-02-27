@@ -8,7 +8,11 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
           libguestfs-tools \
           qemu-utils \
-          linux-image-generic
+          linux-image-generic \
+          python3 \
+          python3-pip
+
+RUN pip3 install j2cli
 
 COPY install.sh /root/install.sh
 

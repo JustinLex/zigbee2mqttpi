@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # copied from raspberry pi image
-# modified to change the init to our preinit script
+# modified to update the kernel commandline
 
 reboot_pi () {
   umount /boot
@@ -188,7 +188,7 @@ mkdir -p /run/systemd
 mount /boot
 mount / -o remount,ro
 
-sed -i 's| init=/usr/lib/raspi-config/init_resize\.sh| init=/sbin/init\.preinit|' /boot/cmdline.txt
+sed -i 's| init=/usr/lib/raspi-config/init_resize\.sh| init=/sbin/init\.preinit cgroup_memory=1 cgroup_enable=memory|' /boot/cmdline.txt
 sed -i 's| sdhci\.debug_quirks2=4||' /boot/cmdline.txt
 
 if ! grep -q splash /boot/cmdline.txt; then

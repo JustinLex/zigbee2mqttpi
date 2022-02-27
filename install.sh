@@ -48,5 +48,12 @@ guestfish --remote -- copy-in /root/v0.21.5-k3s2r1/k3os /root/v0.21.5-k3s2r1/sbi
 guestfish --remote -- copy-in /root/src/init.preinit /sbin/
 guestfish --remote -- copy-in /root/src/init_resize.sh /usr/lib/raspi-config/
 
+echo "installing config and manifests"
+# shellcheck disable=SC2034
+# use j2cli to template manifests into config.yaml
+export manifest="$(base64 -w 0 < /root/src/zigbee2mqtt.yaml)"
+j2 /root/src/config.yaml > /root/config.yaml
+guestfish --remote -- copy-in /root/config.yaml /k3os/system/
+
 # exit
 cleanup_guestfish

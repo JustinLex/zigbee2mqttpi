@@ -1,0 +1,16 @@
+# k3os config file
+write_files:
+- encoding: b64
+  content: "{{ manifest }}"
+  owner: root
+  path: var/lib/rancher/k3s/server/manifests/zigbee2mqtt.yaml
+  permissions: '0755'
+hostname: r3i
+k3os:
+  password: rancher
+  dns_nameservers:
+    - 1.1.1.1
+    - 1.0.0.1
+  ntp_servers:
+    - 0.se.pool.ntp.org
+    - 1.se.pool.ntp.org
