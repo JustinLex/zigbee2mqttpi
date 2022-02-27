@@ -9,3 +9,7 @@ RUN apt-get update && \
           libguestfs-tools \
           qemu-utils \
           linux-image-generic
+
+COPY install.sh /root/install.sh
+
+CMD ./install.sh

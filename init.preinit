@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# preinit idea taken from Sjors Gielen's k3os image generator
+# https://github.com/sgielen/picl-k3os-image-generator/blob/master/init.preinit
+# Needed for preloading the squashfs module before rootfs is remounted
+
+modprobe squashfs || true
+
+exec /sbin/init
