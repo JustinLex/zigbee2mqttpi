@@ -5,7 +5,6 @@ write_files:
   owner: root
   path: var/lib/rancher/k3s/server/manifests/zigbee2mqtt.yaml
   permissions: '0755'
-init_cmd: "resize2fs /dev/mmcblk0p2" # Expand rootfs, because the raspios init resize seems to only expand the partition.
 hostname: r3i
 k3os:
   password: rancher

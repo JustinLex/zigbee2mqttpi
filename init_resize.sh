@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # copied from raspberry pi image
-# modified to update the kernel commandline
+# modified to update the kernel commandline and finish fs resize
 
 reboot_pi () {
   umount /boot
@@ -202,6 +202,7 @@ if ! check_commands; then
 fi
 
 if main; then
+  resize2fs /dev/mmcblk0p2
   whiptail --infobox "Resized root filesystem. Rebooting in 5 seconds..." 20 60
   sleep 5
 else
