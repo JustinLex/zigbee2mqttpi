@@ -5,6 +5,9 @@ write_files:
   owner: root
   path: var/lib/rancher/k3s/server/manifests/zigbee2mqtt.yaml
   permissions: '0755'
+boot_cmd:
+- rc-update add rpc.statd
+- rc-update add nfs
 hostname: r3i
 k3os:
   password: rancher
