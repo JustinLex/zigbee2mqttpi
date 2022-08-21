@@ -10,7 +10,9 @@ RUN apt-get update && \
           qemu-utils \
           linux-image-generic \
           python3 \
-          python3-pip
+          python3-pip \
+          zip \
+          unzip
 
 RUN pip3 install j2cli
 

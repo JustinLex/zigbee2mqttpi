@@ -1,0 +1,18 @@
+[Unit]
+Description=zigbee2mqtt service
+
+[Service]
+Restart=on-failure
+RestartSec=30
+Type=simple
+RemainAfterExit=yes
+TimeoutStartSec=30
+
+ExecStartPre=/bin/sh -c '/usr/bin/apt -y install podman && /usr/bin/podman pod rm -f -i zigbee2mqtt'
+ExecStart=/usr/bin/podman play kube /root/zigbee2mqtt.yaml
+
+ExecStop=/usr/bin/podman pod stop zigbee2mqtt
+ExecStopPost=/usr/bin/podman pod rm zigbee2mqtt
+
+[Install]
+WantedBy=default.target

@@ -5,6 +5,13 @@ to mount the image and copy in our files.
 
 The docker/podman container is based off of Uwe Dauernheim's [docker-guestfs](https://github.com/djui/docker-guestfs) image.
 
+### How to run
+
+```commandline
+podman build -t z2mpi .
+podman run -v $PWD:/root/src:Z --rm z2mpi:latest
+```
+
 ### Sample command to get a guestfish shell with the raspi image inside docker
 
 ```
